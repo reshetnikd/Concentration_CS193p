@@ -18,14 +18,16 @@ class ViewController: UIViewController {
     lazy var game: Concentration = Concentration(numberOfPairsOfCards: (cardButtons.count + 1) / 2)
     var emojiChoices: [String] = ["👻","🎃","😈","💀","🧛🏻‍♂️","🧟‍♂️","🦇","🕸","🕷"]
     var emoji: [Int:String] = [:]
-    var flipCount: Int = 0 {
-        didSet {
-            flipCountLabel.text = "Flips: \(flipCount)"
-        }
-    }
     
+    @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var flipCountLabel: UILabel!
     @IBOutlet var cardButtons: [UIButton]!
+    
+    @IBAction func newGame(_ sender: UIButton) {
+        game = Concentration(numberOfPairsOfCards: (cardButtons.count + 1) / 2)
+        emojiChoices = ["👻","🎃","😈","💀","🧛🏻‍♂️","🧟‍♂️","🦇","🕸","🕷"]
+        updateViewFromModel()
+    }
     
     @IBAction func touchCard(_ sender: UIButton) {
         if let cardNumber = cardButtons.firstIndex(of: sender) {
@@ -34,7 +36,6 @@ class ViewController: UIViewController {
         } else {
             print("chosen card was not in cardButtons")
         }
-        flipCount += 1
     }
     
     func updateViewFromModel() {
@@ -49,6 +50,8 @@ class ViewController: UIViewController {
                 button.backgroundColor = card.isMatched ? #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0) : #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 1)
             }
         }
+        flipCountLabel.text = "Flips: \(game.flips)"
+        scoreLabel.text = "Score: \(game.score)"
     }
     
     func emoji(for card: Card) -> String {
