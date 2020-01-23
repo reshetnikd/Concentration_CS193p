@@ -12,7 +12,7 @@ struct Card {
     
     var isFaceUp: Bool = false
     var isMatched: Bool = false
-    var isPreviouslySeen: Bool = false
+    var isInvolvedInMismatch: Bool = false
     var identifier: Int
     
     private static var identifierFactory = 0

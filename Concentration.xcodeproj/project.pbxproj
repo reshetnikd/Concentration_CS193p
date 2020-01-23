@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		35108CF823DA38DE001C5B61 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35108CF723DA38DE001C5B61 /* Theme.swift */; };
 		3531C47D23CCE8BD003FECC6 /* Concentration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3531C47C23CCE8BD003FECC6 /* Concentration.swift */; };
 		3531C47F23CCE97E003FECC6 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3531C47E23CCE97E003FECC6 /* Card.swift */; };
 		3596272423CB2F7800ADA342 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3596272323CB2F7800ADA342 /* AppDelegate.swift */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		35108CF723DA38DE001C5B61 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		3531C47C23CCE8BD003FECC6 /* Concentration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Concentration.swift; sourceTree = "<group>"; };
 		3531C47E23CCE97E003FECC6 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		3596272023CB2F7800ADA342 /* Concentration.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Concentration.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -64,6 +66,7 @@
 				3596272523CB2F7800ADA342 /* SceneDelegate.swift */,
 				3596272723CB2F7800ADA342 /* ViewController.swift */,
 				3531C47C23CCE8BD003FECC6 /* Concentration.swift */,
+				35108CF723DA38DE001C5B61 /* Theme.swift */,
 				3531C47E23CCE97E003FECC6 /* Card.swift */,
 				3596272923CB2F7800ADA342 /* Main.storyboard */,
 				3596272C23CB2F7900ADA342 /* Assets.xcassets */,
@@ -147,6 +150,7 @@
 				3596272823CB2F7800ADA342 /* ViewController.swift in Sources */,
 				3531C47D23CCE8BD003FECC6 /* Concentration.swift in Sources */,
 				3531C47F23CCE97E003FECC6 /* Card.swift in Sources */,
+				35108CF823DA38DE001C5B61 /* Theme.swift in Sources */,
 				3596272423CB2F7800ADA342 /* AppDelegate.swift in Sources */,
 				3596272623CB2F7800ADA342 /* SceneDelegate.swift in Sources */,
 			);

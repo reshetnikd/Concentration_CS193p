@@ -10,6 +10,7 @@ import Foundation
 
 class Concentration {
     
+    private(set) var startTime: Date = Date()
     private(set) var cards: [Card] = []
     private(set) var flips: Int = 0
     private(set) var score: Int = 0
@@ -38,20 +39,23 @@ class Concentration {
         assert(cards.indices.contains(index), "Concentration.chooseCard(at: \(index)): chosen index not in the cards")
         if !cards[index].isMatched {
             if let matchIndex = indexOfOneAndOnlyFaceUpCard, matchIndex != index {
-                // check if cards match
+                // check if cards match, giving 2 points for every match and penalizing 1 point for every previously seen card that is involved in a mismatch in addition time-based
                 if cards[matchIndex].identifier == cards[index].identifier {
                     cards[matchIndex].isMatched = true
                     cards[index].isMatched = true
-                    score += 2 // TODO: Make normal score counting
+                    score += 2 * ((60 / -Int(startTime.timeIntervalSinceNow)) > 0 ? (60 / -Int(startTime.timeIntervalSinceNow)) : 1)
                 } else {
-                    if cards[matchIndex].isPreviouslySeen || cards[index].isPreviouslySeen {
-                        score -= 1
+                    if cards[matchIndex].isInvolvedInMismatch && cards[index].isInvolvedInMismatch {
+                        score -= 2 * ((-Int(startTime.timeIntervalSinceNow)) < 60 ? (-Int(startTime.timeIntervalSinceNow)) : 1)
+                    } else if cards[matchIndex].isInvolvedInMismatch || cards[index].isInvolvedInMismatch {
+                        score -= 1 * ((-Int(startTime.timeIntervalSinceNow)) < 60 ? (-Int(startTime.timeIntervalSinceNow)) : 1)
                     }
+                    cards[matchIndex].isInvolvedInMismatch = true
+                    cards[index].isInvolvedInMismatch = true
                 }
                 cards[index].isFaceUp = true
             } else {
                 // either no cards or two cards are face up
-                cards[index].isPreviouslySeen = true
                 indexOfOneAndOnlyFaceUpCard = index
             }
         }
@@ -64,7 +68,6 @@ class Concentration {
             let card = Card()
             cards += [card, card]
         }
-        // TODO: Shuffle the cards.
         cards.shuffle()
     }
     
