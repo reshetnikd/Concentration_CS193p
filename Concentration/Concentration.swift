@@ -40,7 +40,7 @@ struct Concentration {
         if !cards[index].isMatched {
             if let matchIndex = indexOfOneAndOnlyFaceUpCard, matchIndex != index {
                 // check if cards match, giving 2 points for every match and penalizing 1 point for every previously seen card that is involved in a mismatch in addition time-based
-                if cards[matchIndex].identifier == cards[index].identifier {
+                if cards[matchIndex] == cards[index] {
                     cards[matchIndex].isMatched = true
                     cards[index].isMatched = true
                     score += 2 * ((60 / -Int(startTime.timeIntervalSinceNow)) > 0 ? (60 / -Int(startTime.timeIntervalSinceNow)) : 1)

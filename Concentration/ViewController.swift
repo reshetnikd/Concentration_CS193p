@@ -18,7 +18,7 @@ class ViewController: UIViewController {
     
     private lazy var game: Concentration = Concentration(numberOfPairsOfCards: numberOfPairsOfCards)
     private var emojiChoices: [String] = []
-    private var emoji: [Int:String] = [:]
+    private var emoji: [Card:String] = [:]
     private var buttonColor: UIColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0)
     private var themes: [Theme] = [Theme(name: "helloween", emoji: ["👻","🎃","😈","💀","🧛🏻‍♂️","🦇","🧛🏻‍♂️","🕸","🕷"], color: #colorLiteral(red: 0.9952403903, green: 0.7589642406, blue: 0.1794864237, alpha: 1), backgroundColor: #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)),
     Theme(name: "animals", emoji: ["🐶","🐱","🐭","🐹","🐰","🦊","🐻","🐼","🐵"], color: #colorLiteral(red: 0.721568644, green: 0.8862745166, blue: 0.5921568871, alpha: 1), backgroundColor: #colorLiteral(red: 0.9372549057, green: 0.3490196168, blue: 0.1921568662, alpha: 1)),
@@ -68,10 +68,10 @@ class ViewController: UIViewController {
     }
     
     private func emoji(for card: Card) -> String {
-        if emoji[card.identifier] == nil, emojiChoices.count > 0 {
-            emoji[card.identifier] = emojiChoices.remove(at: emojiChoices.count.random)
+        if emoji[card] == nil, emojiChoices.count > 0 {
+            emoji[card] = emojiChoices.remove(at: emojiChoices.count.random)
         }
-        return emoji[card.identifier] ?? "?"
+        return emoji[card] ?? "?"
     }
     
     private func chooseTheme(from themes: [Theme]) {
